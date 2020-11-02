@@ -49,15 +49,6 @@ final class DoublyLinkedList<Value>: Sequence {
         
         newNode.previous = tail
         tail?.next = newNode
-
-//        var lastNode = head
-//
-//        while lastNode?.next != nil {
-//            lastNode = lastNode?.next;
-//        }
-//
-//        lastNode?.next = newNode
-//        newNode.previous = lastNode
         tail = newNode
     }
     
@@ -89,7 +80,7 @@ final class DoublyLinkedList<Value>: Sequence {
             nodeToDelete = nodeToDelete?.next
         }
         
-        //Clear
+        //Clean list
         if length == 1 && counter == 0 {
             head = nil
             tail = nil
@@ -108,13 +99,8 @@ final class DoublyLinkedList<Value>: Sequence {
             length -= 1
         }
         
-        if nodeToDelete?.next != nil {
-            nodeToDelete?.next?.previous = nodeToDelete?.previous
-        }
-        
-        if nodeToDelete?.previous != nil {
-            nodeToDelete?.previous?.next = nodeToDelete?.next
-        }
+        nodeToDelete?.next?.previous = nodeToDelete?.previous
+        nodeToDelete?.previous?.next = nodeToDelete?.next
     }
     
     func insert(value: Value, to index: Int) {
