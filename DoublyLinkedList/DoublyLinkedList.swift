@@ -11,29 +11,24 @@ class DoublyLinkedList<Value> {
     
     private var head: LinkedListNode?
     private var tail: LinkedListNode?
+    private var selected: LinkedListNode?
     
-    var length = 0
+    private(set) var length = 0
     
-    func traverse() {
-        
-        var next: LinkedListNode?
-        next = head
-
-        while next != nil {
-            print(next!.value)
-            next = next?.next
-        }
+    var current: Value? {
+        return selected?.value
     }
     
-    func reverse() {
-        
-        var previous: LinkedListNode?
-        previous = tail
-
-        while previous != nil {
-            print(previous!.value)
-            previous = previous?.previous
-        }
+    var next: Value? {
+        let returnValue = selected?.next?.value
+        selected = selected?.next
+        return returnValue
+    }
+    
+    var previous: Value? {
+        let returnValue = selected?.previous?.value
+        selected = selected?.previous
+        return returnValue
     }
 
     func addFirst(value: Value) {
@@ -44,6 +39,7 @@ class DoublyLinkedList<Value> {
         if head == nil {
             head = newNode
             tail = newNode
+            selected = newNode
             return
         }
         
@@ -69,6 +65,7 @@ class DoublyLinkedList<Value> {
         if head == nil {
             head = newNode
             tail = newNode
+            selected = newNode
             return
         }
         

@@ -13,9 +13,17 @@ struct ContentView: View {
     
     var body: some View {
         
-        list.addLast(value: 12)
-        list.addLast(value: 10)
-        list.delete(index: 1)
+        list.addFirst(value: 2)
+        list.addFirst(value: 4)
+//        list.addLast(value: 12)
+//        list.addLast(value: 10)
+        //list.delete(index: 1)
+        print(list.current)
+        print(list.next)
+        print(list.previous)
+        print(list.next)
+        print(list.current)
+        print(list.next)
 //        list.addFirst(value: 2)
 //        list.addFirst(value: 4)
 //        list.addFirst(value: 6)
