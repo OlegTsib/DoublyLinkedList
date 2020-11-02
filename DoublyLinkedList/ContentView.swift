@@ -13,13 +13,13 @@ struct ContentView: View {
     
     var body: some View {
         
-        list.push(value: 12)
-        list.push(value: 10)
+        list.addLast(value: 12)
+        list.addLast(value: 10)
         list.delete(index: 1)
-//        list.append(value: 2)
-//        list.append(value: 4)
-//        list.append(value: 6)
-//        list.append(value: 8)
+//        list.addFirst(value: 2)
+//        list.addFirst(value: 4)
+//        list.addFirst(value: 6)
+//        list.addFirst(value: 8)
         list.traverse()
         print("list length = \(list.length)")
         

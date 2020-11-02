@@ -36,7 +36,7 @@ class DoublyLinkedList<Value> {
         }
     }
 
-    func append(value: Value) {
+    func addFirst(value: Value) {
         
         let newNode = LinkedListNode(value: value)
         length += 1
@@ -61,7 +61,7 @@ class DoublyLinkedList<Value> {
         tail = newNode
     }
     
-    func push(value: Value) {
+    func addLast(value: Value) {
         
         let newNode = LinkedListNode(value: value)
         length += 1
