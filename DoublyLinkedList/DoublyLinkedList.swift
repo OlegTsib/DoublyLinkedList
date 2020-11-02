@@ -31,7 +31,7 @@ class DoublyLinkedList<Value> {
         return returnValue
     }
 
-    func addFirst(value: Value) {
+    func addLast(value: Value) {
         
         let newNode = LinkedListNode(value: value)
         length += 1
@@ -57,7 +57,7 @@ class DoublyLinkedList<Value> {
         tail = newNode
     }
     
-    func addLast(value: Value) {
+    func addFirst(value: Value) {
         
         let newNode = LinkedListNode(value: value)
         length += 1
@@ -85,6 +85,7 @@ class DoublyLinkedList<Value> {
             nodeToDelete = nodeToDelete?.next
         }
         
+        //Clear
         if length == 1 && counter == 0 {
             head = nil
             tail = nil
@@ -92,6 +93,7 @@ class DoublyLinkedList<Value> {
             return
         }
         
+        //Delete head
         if length > 1 && counter == 0 {
             head = nodeToDelete?.next
             length -= 1
@@ -109,6 +111,48 @@ class DoublyLinkedList<Value> {
         if nodeToDelete?.previous != nil {
             nodeToDelete?.previous?.next = nodeToDelete?.next
         }
+    }
+    
+    func insert(value: Value, to index: Int) {
+        
+        guard index < length else { return }
+        
+        let newNode = LinkedListNode(value: value)
+        length += 1
+        
+        var counter = 0
+        var nodeToMove = head
+        
+        while counter < index {
+            counter += 1
+            nodeToMove = nodeToMove?.next
+        }
+        
+        if index == 0 {
+            addFirst(value: value)
+            return
+        }
+        
+        newNode.previous = nodeToMove?.previous
+        newNode.next = nodeToMove
+        
+        nodeToMove?.previous?.next = newNode
+        nodeToMove?.previous = newNode
+    }
+    
+    func value(for index: Int) -> Value? {
+        guard index < length else { return nil }
+        
+        var counter = 0
+        
+        var node = head
+        
+        while counter < index {
+            counter += 1
+            node = node?.next
+        }
+        
+        return node?.value
     }
 }
 
