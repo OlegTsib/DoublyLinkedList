@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DoublyLinkedList<Value> {
+final class DoublyLinkedList<Value>: Sequence {
     
     private var head: LinkedListNode?
     private var tail: LinkedListNode?
@@ -29,6 +29,10 @@ class DoublyLinkedList<Value> {
         let returnValue = selected?.previous?.value
         selected = selected?.previous
         return returnValue
+    }
+    
+    func makeIterator() -> some IteratorProtocol {
+        return DoublyLinkedListIterator<Value>(head)
     }
 
     func addLast(value: Value) {
@@ -158,7 +162,7 @@ class DoublyLinkedList<Value> {
 
 extension DoublyLinkedList {
     
-    class LinkedListNode {
+    private final class LinkedListNode {
         
         var value: Value
         var next: LinkedListNode?
@@ -168,6 +172,26 @@ extension DoublyLinkedList {
             self.value = value
             self.next = next
             self.previous = previous
+        }
+    }
+}
+
+extension DoublyLinkedList {
+    
+    private final class DoublyLinkedListIterator<Value>: IteratorProtocol {
+        
+        private let head: LinkedListNode?
+        private var currentNode: LinkedListNode?
+        
+        init(_ head: LinkedListNode?) {
+            self.head = head
+            self.currentNode = head
+        }
+        
+        func next() -> Value? {
+            let value = currentNode?.value
+            currentNode = currentNode?.next
+            return value as? Value
         }
     }
 }

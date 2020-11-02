@@ -33,6 +33,11 @@ struct ContentView: View {
 //        list.addFirst(value: 6)
 //        list.addFirst(value: 8)
         list.traverse()
+        
+        for i in list {
+            print("List item = \(i)")
+        }
+        
         print("list length = \(list.length)")
         
         return Text("Hello, world!")
