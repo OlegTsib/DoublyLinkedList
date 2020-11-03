@@ -15,6 +15,11 @@ final class DoublyLinkedList<Value>: Sequence {
     
     private(set) var length = 0
     
+    var values: [Value] {
+        let array = self.compactMap({$0 as? Value})
+        return array
+    }
+    
     var current: Value? {
         return selected?.value
     }
@@ -130,7 +135,7 @@ final class DoublyLinkedList<Value>: Sequence {
         nodeToMove?.previous = newNode
     }
     
-    func value(for index: Int) -> Value? {
+    func value(at index: Int) -> Value? {
         guard index < length else { return nil }
         
         var counter = 0
