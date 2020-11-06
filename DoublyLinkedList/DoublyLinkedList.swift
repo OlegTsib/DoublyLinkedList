@@ -9,9 +9,9 @@ import Foundation
 
 final class DoublyLinkedList<Value>: Sequence {
     
-    private var head: LinkedListNode?
-    private var tail: LinkedListNode?
-    private var selected: LinkedListNode?
+    private var head: LinkedListNode<Value>?
+    private var tail: LinkedListNode<Value>?
+    private var selected: LinkedListNode<Value>?
     
     private(set) var length = 0
     
@@ -89,6 +89,7 @@ final class DoublyLinkedList<Value>: Sequence {
         if length == 1 && counter == 0 {
             head = nil
             tail = nil
+            selected = nil
             length -= 1
             return
         }
@@ -153,8 +154,8 @@ final class DoublyLinkedList<Value>: Sequence {
 
 extension DoublyLinkedList {
     
-    private final class LinkedListNode {
-        
+    private final class LinkedListNode<Value> {
+
         var value: Value
         var next: LinkedListNode?
         var previous: LinkedListNode?
@@ -171,10 +172,10 @@ extension DoublyLinkedList {
     
     private final class DoublyLinkedListIterator<Value>: IteratorProtocol {
         
-        private let head: LinkedListNode?
-        private var currentNode: LinkedListNode?
+        private let head: LinkedListNode<Value>?
+        private var currentNode: LinkedListNode<Value>?
         
-        init(_ head: LinkedListNode?) {
+        init(_ head: LinkedListNode<Value>?) {
             self.head = head
             self.currentNode = head
         }
@@ -182,7 +183,7 @@ extension DoublyLinkedList {
         func next() -> Value? {
             let value = currentNode?.value
             currentNode = currentNode?.next
-            return value as? Value
+            return value
         }
     }
 }

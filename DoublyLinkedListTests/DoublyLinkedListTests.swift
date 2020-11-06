@@ -71,8 +71,10 @@ class DoublyLinkedListTests: XCTestCase {
     func testCurrent() {
         list = DoublyLinkedList<Int>()
         list.addLast(value: 1)
+        list.addLast(value: 2)
+        _ = list.next
         
-        XCTAssertEqual(list.current, 1)
+        XCTAssertEqual(list.current, 2)
     }
     
     func testNext() {
