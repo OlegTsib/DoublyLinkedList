@@ -27,7 +27,7 @@ class DoublyLinkedListTests: XCTestCase {
         list.addFirst(value: 2)
         list.addFirst(value: 1)
         let values = list.values
-
+        
         XCTAssertEqual(values, [1,2])
     }
     
